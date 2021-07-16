@@ -7,7 +7,7 @@ def write_key()
         key_file.write(key)"""
 
 def load_key():
-    file = open("./passwordManager/key.key", "rb")
+    file = open("key.key", "rb")
     key = file.read()
     file.close()
     return key
@@ -16,7 +16,7 @@ key = load_key()
 fer = Fernet(key)
 
 def view():
-    with open("./passwordManager/passwords.txt", "r") as f:
+    with open("passwords.txt", "r") as f:
         for line in f.readlines():
             data = line.rstrip()
             user, passw = data.split("|")
@@ -27,7 +27,7 @@ def add():
     name = input("Account Name: ")
     pwd = input("Password: ")
 
-    with open("./passwordManager/passwords.txt", "a") as f:
+    with open("passwords.txt", "a") as f:
         f.write(name + "|" + fer.encrypt(pwd.encode()).decode() + "\n")
 
 
