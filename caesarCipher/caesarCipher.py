@@ -18,8 +18,13 @@ def encrypt ( string, shift ):
     return encryption
 
 
-print("Welcome to Caesar Cipher encyprtion and decryption: ")
-shift_input = input("Enter your shift: ")
-message_input = input("Enter your message: ")
+while True:
+        
+    print("Welcome to Caesar Cipher encyprtion and decryption: ")
+    shift_input = input("Enter your shift: ")
+    message_input = input("Enter your message: ")
 
-print(encrypt ( shift_input, message_input))
+    if not type(shift_input) == int and not type(message_input) == str:
+        print("Please enter integer for shift input and/or string for message input")
+
+    print(encrypt ( shift_input, message_input))
