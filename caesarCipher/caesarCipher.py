@@ -20,7 +20,7 @@ def encrypt ( string, shift ):
 
 while True:
         
-    print("Welcome to Caesar Cipher encyprtion and decryption: ")
+    print("Welcome to Caesar Cipher encryption and decryption: ")
     shift_input = input("Enter your shift: ")
     message_input = input("Enter your message: ")
 
