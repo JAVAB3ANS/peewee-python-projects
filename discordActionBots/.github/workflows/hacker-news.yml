@@ -1,0 +1,26 @@
+name: Hacker News Discord Webhook
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 13-15 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setting up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+          architecture: "x64"
+
+      - name: Running Script
+        env:
+          WEBHOOK_URL: ${{ secrets.HACKER_NEWS }}
+        run: |
+          pip install -r requirements.txt
+          python hacker_news.py
