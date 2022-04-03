@@ -1,9 +1,10 @@
+from discord_webhook import DiscordWebhook, DiscordEmbed
 import sys 
 import urllib.request
 import requests
 import urllib
 
-WEBHOOK_URL = "[INSERT WEBHOOK URL]"
+webhook = DiscordWebhook(url="[INSERT WEBHOOK URL]", username="Last.FM")
 
 PERIODS_MAP = {
   "7 days": "7day",
@@ -20,7 +21,7 @@ SIZES_MAP = {
   "5x5": "5x5"
 } 
 
-username = "[insert LAST.FM username]"  
+username = "[INSERT LAST.FM USERNAME]"  
 period = "7 days"
 size = "5x5"
 captions = True
@@ -42,28 +43,19 @@ def main():
       print(f"[{resp.status_code}] Data received. Sending to webhook...")
 
       urllib.request.urlretrieve(final_url, "./daily-last-fm-chart/daily-last-fm-chart.jpg")
+ 
+      with open("./daily-last-fm-chart/daily-last-fm-chart.jpg", "rb") as f:
+        webhook.add_file(file=f.read(), filename="./daily-last-fm-chart/daily-last-fm-chart.jpg")
 
-      files = {
-        "file": ("./daily-last-fm-chart/daily-last-fm-chart.jpg", open("./daily-last-fm-chart/daily-last-fm-chart.jpg", "rb")), 
-      }
+      embed = DiscordEmbed(color=102204)
+      embed.set_author(name=f"{PERIODS_MAP[period]} Weekly Chart for {username}")
+      embed.set_footer(text=f"{username}'s Daily Picks")
+      embed.set_timestamp()
 
-      embed = {     
-        "color": 102204,
-        "author": {
-            "name": f"{size} Weekly Chart for {username}"
-        },
-        "footer": { "text": f"{username}'s Daily Picks"},
-        "image": {
-            "url": final_url
-        }
-      }
+      # add embed object to webhook
+      webhook.add_embed(embed)
+      webhook.execute()
 
-      data = {
-        "username": "Last.FM",   
-        "embeds": [ embed ]
-      }
-
-      requests.post(WEBHOOK_URL, files=files, json=data)
       print("Has been sent!") 
   except Exception as e:
     print("Couldn't download chart!\n[ERROR] ", e)
