@@ -2,7 +2,6 @@ from discord_webhook import DiscordWebhook, DiscordEmbed
 import sys 
 import urllib.request
 import requests
-import urllib
 
 webhook = DiscordWebhook(url="[INSERT WEBHOOK URL]", username="Last.FM")
 
