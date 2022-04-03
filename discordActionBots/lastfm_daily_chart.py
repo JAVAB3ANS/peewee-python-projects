@@ -1,5 +1,7 @@
 import sys 
-import requests  
+import urllib.request
+import requests
+import urllib
 
 WEBHOOK_URL = "[INSERT WEBHOOK URL]"
 
@@ -31,32 +33,38 @@ def main():
   print(f"Downloading a {size} chart for user {username}, from the past {period}...") 
 
   try: 
-      final_url = f"https://tapmusic.net/collage.php?user={username}&type={PERIODS_MAP[period]}&size={SIZES_MAP[size]}{'&caption=true' if captions else ''}"
+    final_url = f"https://tapmusic.net/collage.php?user={username}&type={PERIODS_MAP[period]}&size={SIZES_MAP[size]}{'&caption=true' if captions else ''}"
 
-      resp = requests.get(final_url)
-      resp.raise_for_status()
+    resp = requests.get(final_url) 
 
-      if resp.ok: 
-        print(f"[{resp.status_code}] Data received. Sending to webhook...")
+    if resp.status_code == 200:
+      
+      print(f"[{resp.status_code}] Data received. Sending to webhook...")
 
-        payload = {
-                    "username": "Last.FM",   
-                    "embeds": [
-                        {     
-                            "color": 102204,
-                            "author": {
-                                "name": f"{size} Weekly Chart for {username}"
-                            },
-                            "footer": { "text": f"{username}'s Daily Picks"},
-                            "image": {
-                                "url": final_url
-                            }
-                        }
-                    ]
-            }
+      urllib.request.urlretrieve(final_url, "./daily-last-fm-chart/daily-last-fm-chart.jpg")
 
-        requests.post(WEBHOOK_URL, json=payload)
-        print("Has been sent!") 
+      files = {
+        "file": ("./daily-last-fm-chart/daily-last-fm-chart.jpg", open("./daily-last-fm-chart/daily-last-fm-chart.jpg", "rb")), 
+      }
+
+      embed = {     
+        "color": 102204,
+        "author": {
+            "name": f"{size} Weekly Chart for {username}"
+        },
+        "footer": { "text": f"{username}'s Daily Picks"},
+        "image": {
+            "url": final_url
+        }
+      }
+
+      data = {
+        "username": "Last.FM",   
+        "embeds": [ embed ]
+      }
+
+      requests.post(WEBHOOK_URL, files=files, json=data)
+      print("Has been sent!") 
   except Exception as e:
     print("Couldn't download chart!\n[ERROR] ", e)
 
