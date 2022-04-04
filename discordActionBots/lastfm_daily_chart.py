@@ -44,7 +44,7 @@ def main():
       urllib.request.urlretrieve(final_url, "./daily-last-fm-chart/daily-last-fm-chart.jpg")
  
       with open("./daily-last-fm-chart/daily-last-fm-chart.jpg", "rb") as f:
-        webhook.add_file(file=f.read(), filename="./daily-last-fm-chart/daily-last-fm-chart.jpg")
+        webhook.add_file(file=f.read(), filename="./daily-last-fm-chart.jpg")
 
       embed = DiscordEmbed(color=102204)
       embed.set_author(name=f"{PERIODS_MAP[period]} Weekly Chart for {username}")
