@@ -12,7 +12,7 @@
 
 - New artists compared to last week (% vs %)
 - New albums compared to last week (% vs %)
-- New tracks compares to last week (% vs %)
+- New tracks compared to last week (% vs %)
 
 - Listening clock pie chart:
     > most active hour

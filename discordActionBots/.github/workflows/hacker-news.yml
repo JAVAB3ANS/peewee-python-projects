@@ -3,7 +3,7 @@ name: Hacker News Discord Webhook
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 13-15 * * *"
+    - cron: "0 0 * * *"
 
 jobs:
   build:

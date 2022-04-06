@@ -16,7 +16,7 @@ while True:
     random_number = random.randint(0, 2) 
     # rock: 0, paper: 1, scissors: 2
     computer_pick = options[random_number]
-    print("Computer picked", computer_pick + ".")
+    print(f"Computer picked: {computer_pick}")
 
     if user_input == "rock" and computer_pick == "scissors":
         print("You won!")
@@ -34,6 +34,6 @@ while True:
         print("You lost!")
         computer_wins += 1
 
-print("You won", user_wins, "times.")
-print("The computer won", computer_wins, "times.")
+print(f"You won {user_wins} times.")
+print(f"The computer won {computer_wins} times.")
 print("Goodbye!")

@@ -17,9 +17,9 @@ def decode(secretMessage):
             else:
                 attempt += newAlphabet[index]
         print("-"*15)
-        print("Key: " + str(key) + " - " + attempt)
+        print(f"Key: {str(key)} - {attempt}")
         print("-"*15)
 
-        #Call  decode function
+        # Call decode function
 
 decode(message)
