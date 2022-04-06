@@ -16,6 +16,6 @@
 
 - Listening clock pie chart:
     > most active hour
-    > amount of scribbles
+    > amount of scrobbles
 
 """
