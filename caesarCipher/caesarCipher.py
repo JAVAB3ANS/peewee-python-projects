@@ -15,9 +15,9 @@ def encrypt (string, shift):
  
 def main():
     print("Welcome to Caesar Cipher encryption and decryption: ")
-
-    shift_input = int(input("Enter your shift: "))
+    
     message_input = input("Enter your message: ")
+    shift_input = int(input("Enter your shift: "))
 
     if not type(shift_input) == int and not type(message_input) == str:
         print("Please enter integer for shift input and/or string for message input")
