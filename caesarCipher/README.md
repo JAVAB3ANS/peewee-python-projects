@@ -6,7 +6,7 @@
 
 - Encrypt messages using Caesar's cipher by calling the `encrypt` function to encode the message.  
 ```
-    Welcome to Caesar Cipher encryption and decryption:
+    === Welcome to Caesar Cipher encryption ===
 
     Enter your message: CAESAR CIPHER EXAMPLE
     Enter your shift: 4

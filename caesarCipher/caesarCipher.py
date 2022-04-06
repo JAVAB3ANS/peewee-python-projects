@@ -16,7 +16,7 @@ def encrypt (string, shift):
     return encryption
  
 def main():
-    print("Welcome to Caesar Cipher encryption and decryption:\n")
+    print("=== Welcome to Caesar Cipher encryption ===\n")
     
     # message = str
     message_input = input("Enter your message: ")
