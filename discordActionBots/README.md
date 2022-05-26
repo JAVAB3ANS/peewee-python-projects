@@ -12,3 +12,6 @@
 
 3. **Reddit News:**
     - Get submissions from multiple subreddits using the Reddit API and post them in a **Discord** channel via webhook. 
+
+4. **Raspberry Pi 4 Screenshot:**
+    - Scrapes Raspberry Pi 4 dashboard statistics from PiTunnel into my dedicated Discord channel.
