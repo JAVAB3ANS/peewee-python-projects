@@ -11,7 +11,7 @@
     - `last_fm_realtime_statistics.py`: Will get top 10 global artists, releases, tracks, and most loved tracks. 
 
 3. **Reddit News:**
-    - Get submissions from multiple subreddits using the Reddit API and post them in a **Discord** channel via webhook. 
+    - Get submissions from multiple subreddits using the **Reddit API** and post them in a **Discord** channel via webhook. 
 
 4. **Raspberry Pi 4 Screenshot:**
-    - Scrapes Raspberry Pi 4 dashboard statistics from PiTunnel into my dedicated Discord channel.
+    - Scrapes **Raspberry Pi 4** dashboard statistics from **PiTunnel** into my dedicated **Discord** channel.
